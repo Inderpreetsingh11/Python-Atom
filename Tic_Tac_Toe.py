@@ -49,6 +49,17 @@ def AI_move():
             print(number)
             run = False
 
+def Winner():
+    if list_of_selected_numbers[0] == list_of_selected_numbers[1] == list_of_selected_numbers[2] or
+    list_of_selected_numbers[3] == list_of_selected_numbers[4] == list_of_selected_numbers[5] or
+    list_of_selected_numbers[6] == list_of_selected_numbers[7] == list_of_selected_numbers[8] or
+    list_of_selected_numbers[0] == list_of_selected_numbers[3] == list_of_selected_numbers[6] or
+    list_of_selected_numbers[1] == list_of_selected_numbers[4] == list_of_selected_numbers[7] or
+    list_of_selected_numbers[2] == list_of_selected_numbers[5] == list_of_selected_numbers[8] or
+    list_of_selected_numbers[0] == list_of_selected_numbers[4] == list_of_selected_numbers[8] or
+    list_of_selected_numbers[2] == list_of_selected_numbers[4] == list_of_selected_numbers[6]:
+        print('We Got a winner')
+
 
 print("Welcome to the Tic Tac Toe game")
 tic_tac_toe_box()
