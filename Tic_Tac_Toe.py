@@ -1,3 +1,5 @@
+import random
+
 list_of_numbers = []
 list_of_selected_numbers =[]
 for i in range(9):
@@ -32,12 +34,23 @@ def choose_an_option():
                 print('Position already selected. Select something else')
             else:
                 list_of_numbers[position-1] = "X "
-                list_of_selected_numbers.append(position)
+                list_of_selected_numbers.append(number)
                 run = False
         except ValueError:
             print('Enter correct value')
 
+def AI_move():
+    run = True
+    while(run):
+        number = random.choice(range(1,10))
+        if number not in list_of_selected_numbers:
+            list_of_numbers[number-1] = "O "
+            list_of_selected_numbers.append(number)
+            print(number)
+            run = False
+
 
 print("Welcome to the Tic Tac Toe game")
 tic_tac_toe_box()
+AI_move()
 choose_an_option()
