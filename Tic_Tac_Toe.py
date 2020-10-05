@@ -30,11 +30,11 @@ def choose_an_option():
             position = int(input("Choose position (1-9)"))
             if position not in range(1,10):
                 print('Enter value between 1-9')
-            elif position in list_of_numbers:
+            elif position in list_of_selected_numbers:
                 print('Position already selected. Select something else')
             else:
                 list_of_numbers[position-1] = "X "
-                list_of_selected_numbers.append(number)
+                list_of_selected_numbers.append(position)
                 run = False
         except ValueError:
             print('Enter correct value')
@@ -42,26 +42,38 @@ def choose_an_option():
 def AI_move():
     run = True
     while(run):
-        number = random.choice(range(1,10))
-        if number not in list_of_selected_numbers:
-            list_of_numbers[number-1] = "O "
-            list_of_selected_numbers.append(number)
-            print(number)
-            run = False
+        if len(list_of_selected_numbers) !=9:
+            number = random.choice(range(1,10))
+            if number not in list_of_selected_numbers:
+                list_of_numbers[number-1] = "O "
+                list_of_selected_numbers.append(number)
+                print(number)
+                run = False
+        else:
+            break
 
 def Winner():
-    if list_of_selected_numbers[0] == list_of_selected_numbers[1] == list_of_selected_numbers[2] or
-    list_of_selected_numbers[3] == list_of_selected_numbers[4] == list_of_selected_numbers[5] or
-    list_of_selected_numbers[6] == list_of_selected_numbers[7] == list_of_selected_numbers[8] or
-    list_of_selected_numbers[0] == list_of_selected_numbers[3] == list_of_selected_numbers[6] or
-    list_of_selected_numbers[1] == list_of_selected_numbers[4] == list_of_selected_numbers[7] or
-    list_of_selected_numbers[2] == list_of_selected_numbers[5] == list_of_selected_numbers[8] or
-    list_of_selected_numbers[0] == list_of_selected_numbers[4] == list_of_selected_numbers[8] or
-    list_of_selected_numbers[2] == list_of_selected_numbers[4] == list_of_selected_numbers[6]:
-        print('We Got a winner')
+    if (list_of_numbers[0] == list_of_numbers[1] == list_of_numbers[2] == 'X ')or(list_of_numbers[3] == list_of_numbers[4] == list_of_numbers[5] == 'X ')or(list_of_numbers[6] == list_of_numbers[7] == list_of_numbers[8] == 'X ')or(list_of_numbers[0] == list_of_numbers[3] == list_of_numbers[6] == 'X ')or(list_of_numbers[1] == list_of_numbers[4] == list_of_numbers[7] == 'X ')or(list_of_numbers[2] == list_of_numbers[5] == list_of_numbers[8] == 'X ')or(list_of_numbers[0] == list_of_numbers[4] == list_of_numbers[8] == 'X ')or(list_of_numbers[2] == list_of_numbers[4] == list_of_numbers[6] == 'X ')or(list_of_numbers[0] == list_of_numbers[1] == list_of_numbers[2] == 'O ')or(list_of_numbers[3] == list_of_numbers[4] == list_of_numbers[5] == 'O ')or(list_of_numbers[6] == list_of_numbers[7] == list_of_numbers[8] == 'O ')or(list_of_numbers[0] == list_of_numbers[3] == list_of_numbers[6] == 'O ')or(list_of_numbers[1] == list_of_numbers[4] == list_of_numbers[7] == 'O ')or(list_of_numbers[2] == list_of_numbers[5] == list_of_numbers[8] == 'O ')or(list_of_numbers[0] == list_of_numbers[4] == list_of_numbers[8] == 'O ')or(list_of_numbers[2] == list_of_numbers[4] == list_of_numbers[6] == 'O '):
+        xyz = True
+        print('We got a winner!!')
+        return xyz
+    elif len(list_of_selected_numbers) == 9:
+        print("It's a Tie")
+        xyz = True
+        return xyz
+    else:
+        xyz = False
+        return xyz
+
 
 
 print("Welcome to the Tic Tac Toe game")
+print("The user's symbol will be 'X'")
+print("The computer's symbol will be 'O'")
 tic_tac_toe_box()
-AI_move()
-choose_an_option()
+while 1 == 1:
+    choose_an_option()
+    AI_move()
+    tic_tac_toe_box()
+    if Winner() == True:
+        break
