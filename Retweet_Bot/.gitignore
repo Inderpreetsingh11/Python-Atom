@@ -136,3 +136,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+#liked_tweets_id.json
+liked_tweets_id.json
