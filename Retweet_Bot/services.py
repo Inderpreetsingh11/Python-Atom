@@ -2,6 +2,7 @@ import tweepy
 import json
 
 id_of_liked_tweets = []
+id_of_retweeted_tweets = []
 
 def Authentication(API_KEY,API_SECRET,ACCESS_KEY,ACCESS_SECRET):
     auth = tweepy.OAuthHandler(API_KEY,API_SECRET)
@@ -20,6 +21,8 @@ def retweet_liked_tweets(id,api):
     except tweepy.TweepError as e:
         print(e)
 
-def write_to_json(id_of_liked_tweets):
-    with open('liked_tweets_id.json', 'w') as json_file:
-        json.dump(id_of_liked_tweets, json_file)
+def get_retweets_home_timeline(api):
+    for tweet in api.home_timeline():
+        if tweet.retweet_count != 0:
+            id_of_retweeted_tweets.append(tweet.retweeted_status.id)
+    return id_of_retweeted_tweets

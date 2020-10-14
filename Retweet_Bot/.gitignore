@@ -139,3 +139,7 @@ cython_debug/
 
 #liked_tweets_id.json
 liked_tweets_id.json
+
+#test files
+test.py
+test2.py
